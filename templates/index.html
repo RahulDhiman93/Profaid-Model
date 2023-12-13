@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">'
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="/static/app.css">
+    <title>ProfAid</title>
+</head>
+<body>
+    <div id="app-container">
+        <h1>ProfAid</h1>
+
+        <div class="input-field">
+            <label for="userInput">Enter Input:</label>
+            <input type="text" id="userInput" placeholder="Type something..." class="validate">
+        </div>
+
+        <button class="waves-effect waves-light btn" onclick="predictInput()">Predict</button>
+
+        <p id="result"></p>
+    </div>
+
+    <script>
+    async function predictInput() {
+        const userInput = document.getElementById('userInput').value;
+
+        const response = await fetch(`/predict?text=${userInput}`);
+
+        const result = await response.json();
+
+        document.getElementById('result').innerText = result.prediction.toUpperCase();
+    }
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+</html>

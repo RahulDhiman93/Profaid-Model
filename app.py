@@ -1,5 +1,4 @@
-from flask import Flask, request, jsonify
-from sklearn.feature_extraction.text import TfidfVectorizer
+from flask import Flask, render_template, request, jsonify
 import joblib
 
 app = Flask(__name__)
@@ -8,6 +7,9 @@ app = Flask(__name__)
 model = joblib.load('profaid_prod_model.joblib')
 vectorizer = joblib.load('profaid_prod_vectorizer.joblib')  # Make sure to replace with the correct filename
 
+@app.route('/')
+def index():
+    return render_template('index.html')
 
 @app.route('/predict', methods=['GET'])
 def predict():
@@ -20,6 +22,6 @@ def predict():
     except Exception as e:
         return jsonify({'error': str(e)})
 
-
 if __name__ == '__main__':
-    app.run(port=5000)
+    # app.run(port=5000)
+    app.run(debug=True)
