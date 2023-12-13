@@ -16,10 +16,6 @@ To use the Profaid Model, follow these steps:
 1. `git clone https://github.com/your-username/Profaid-Model.git`
 2. `cd Profaid-Model`
 
-#3 Install the required dependencies:
-pip install -r requirements.txt
-Download the pre-trained model weights (if available) or train the model using the instructions in the Model Training section.
-
 ## Usage
 You can use the Profaid Model in your Python code by importing the necessary functions from the profaid_model module.
 
