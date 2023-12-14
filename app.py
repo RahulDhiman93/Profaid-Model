@@ -3,9 +3,8 @@ import joblib
 
 app = Flask(__name__)
 
-# Load the trained model
 model = joblib.load('profaid_prod_model.joblib')
-vectorizer = joblib.load('profaid_prod_vectorizer.joblib')  # Make sure to replace with the correct filename
+vectorizer = joblib.load('profaid_prod_vectorizer.joblib')
 
 @app.route('/')
 def index():
