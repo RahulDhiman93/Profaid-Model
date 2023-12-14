@@ -1,20 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">'
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ProfAid - Modern Predictive Tool">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="/static/app.css">
-    <title>ProfAid</title>
+    <title>ProfAid - Modern Predictive Tool</title>
 </head>
+
 <body>
-    <div id="app-container">
-        <h1>ProfAid</h1>
+    <div id="app-container" class="container">
+        <h1 class="app-title">ProfAid</h1>
+        <p>Enter a text to get a prediction:</p>
 
         <div class="input-field">
             <label for="userInput">Enter Input:</label>
-            <input type="text" id="userInput" placeholder="Type something..." class="validate">
+            <textarea id="userInput" placeholder="Type something..." class="materialize-textarea"></textarea>
         </div>
 
         <button class="waves-effect waves-light btn" onclick="predictInput()">Predict</button>
@@ -22,18 +25,38 @@
         <p id="result"></p>
     </div>
 
+    <footer>
+        <div class="row">
+
+            <div class="col-12 tab-full">
+                <div class="copyright">
+                <span>Developed by <a href="https://rahuldhiman93.github.io/Portfolio/" target="_blank">Rahul
+							Dhiman</a></span>
+                </div>
+            </div>
+
+        </div>
+    </footer>
+
     <script>
-    async function predictInput() {
-        const userInput = document.getElementById('userInput').value;
+        async function predictInput() {
+            const userInput = document.getElementById('userInput').value;
 
-        const response = await fetch(`/predict?text=${userInput}`);
+            const response = await fetch('/predict', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ input_text: userInput })
+            });
 
-        const result = await response.json();
+            const result = await response.json();
 
-        document.getElementById('result').innerText = result.prediction.toUpperCase();
-    }
+            document.getElementById('result').innerText = result.prediction.toUpperCase();
+        }
     </script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </body>
+
 </html>

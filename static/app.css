@@ -1,6 +1,6 @@
 body {
     font-family: 'Roboto', sans-serif;
-    background: linear-gradient(to bottom right, #3498db, #2ecc71); /* Gradient colors */
+    background: linear-gradient(to bottom right, #3498db, #2ecc71);
     margin: 0;
     padding: 0;
     display: flex;
@@ -14,13 +14,17 @@ body {
     width: 80%;
     padding: 20px;
     border-radius: 8px;
-    background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
+    background-color: rgba(255, 255, 255, 0.9);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-h1 {
+.app-title {
     color: #2e9fcc;
-    margin-bottom: 20px;
+    font-size: 4.0em;
+}
+
+p {
+    margin-bottom: 30px;
 }
 
 label {
@@ -28,11 +32,17 @@ label {
     margin-bottom: 5px;
 }
 
-input {
+textarea {
     padding: 8px;
     margin-bottom: 15px;
     width: 100%;
+    height: 80%;
     box-sizing: border-box;
+}
+
+#userInput {
+    max-height: 40vh;
+    overflow-y: auto;
 }
 
 button {
@@ -44,13 +54,71 @@ button {
     cursor: pointer;
 }
 
-#resultLabel {
-    font-weight: bold;
-    margin-top: 20px;
-}
-
 #result {
     margin-top: 20px;
     font-weight: bold;
     font-size: large;
+}
+
+footer {
+    position: fixed;
+    margin-top: 2rem;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    padding-bottom: 1rem;
+    font-size: 1.0rem;
+}
+
+footer a,
+footer a:visited {
+    color: #FFFFFF;
+}
+
+footer a:hover,
+footer a:focus {
+    color: #4285f4;
+}
+
+footer .row {
+    max-width: 100%;
+}
+
+footer .social {
+    text-align: right;
+}
+
+footer .footer-social {
+    display: inline-block;
+    font-size: 2.1rem;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    top: -.3rem;
+}
+
+footer .footer-social li {
+    display: inline-block;
+    margin: 0 12px;
+    padding: 0;
+}
+
+footer .footer-social li a {
+    color: #FFFFFF;
+}
+
+footer .copyright span {
+    display: inline-block;
+}
+
+footer .copyright span::after {
+    content: "|";
+    display: inline-block;
+    padding: 0 0.5rem 0 0.7rem;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+footer .copyright span:last-child::after {
+    display: none;
 }

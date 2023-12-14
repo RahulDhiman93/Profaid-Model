@@ -11,14 +11,19 @@ vectorizer = joblib.load('profaid_prod_vectorizer.joblib')  # Make sure to repla
 def index():
     return render_template('index.html')
 
-@app.route('/predict', methods=['GET'])
+@app.route('/predict', methods=['POST'])
 def predict():
     try:
-        input_data = request.args.get('text')
-        new_text_vectorized = vectorizer.transform([input_data])
-        predicted_label = model.predict(new_text_vectorized)[0]
+        input_data = request.get_json().get('input_text')
 
-        return jsonify({'prediction': predicted_label})
+        if input_data == "":
+            return jsonify({'prediction': "No Input or Wrong Input"})
+        else:
+            print("PAYLOAD:", input_data)
+            new_text_vectorized = vectorizer.transform([input_data])
+            predicted_label = model.predict(new_text_vectorized)[0]
+            return jsonify({'prediction': predicted_label})
+
     except Exception as e:
         return jsonify({'error': str(e)})
 
