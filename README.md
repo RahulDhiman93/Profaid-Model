@@ -27,7 +27,7 @@ The repository includes a Flask-based microservice that allows you to make predi
 
 ### 2. Start the Flask app:
 python app.py
-The microservice will be accessible at `http://127.0.0.1:5000/predict?text=your_input_data_here`. You can use this endpoint to make predictions using the provided API.
+The microservice will be accessible at `http://127.0.0.1:5000/`. You can use this web app to make predictions.
 
 ## Contributing
-If you would like to contribute to the development of the Profaid Model, please follow the guidelines in CONTRIBUTING.md.
+If you'd like to contribute to the development of the Profaid Model, please follow the guidelines and contribute as needed.
