@@ -51,9 +51,14 @@ jobs:
       - name: Install dependencies
         run: |
           bundle install
+      - name: Check if requirements.txt exists
+        run: |
+          if [ -f requirements.txt ]; then
+            pip install -r requirements.txt
+          fi
       - name: Run application
         run: |
-          ruby app.py  # Replace with the actual command to run your application
+          python app.py  # Replace with the actual command to run your application
 
   # Deployment job
   deploy:
